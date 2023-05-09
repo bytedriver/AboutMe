@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  StoryView.swift
 //  AboutMe
 //
 //  88                                                     88              88                                     
@@ -19,34 +19,26 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct StoryView: View {
     var body: some View {
-        TabView {
-            HomeView()
-                .tabItem {
-                    Label("Home", systemImage: "person")
-                }
-
-            StoryView()
-                .tabItem {
-                    Label("Story", systemImage: "book")
-                }
+        VStack {
+            Text("My Story")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .padding()
             
-            FavoritesView()
-                .tabItem {
-                    Label("Favorites", systemImage: "star")
-                }
-            
-            FunFactsView()
-                .tabItem {
-                    Label("Fun Facts", systemImage: "hand.thumbsup")
-                }
+            ScrollView {
+                Text(information.story)
+                    .font(.body)
+                    .padding()
+            }
         }
+        .padding([.top, .bottom], 50)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct StoryView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        StoryView()
     }
 }

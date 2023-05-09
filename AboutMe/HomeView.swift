@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  AboutMe
 //
 //  88                                                     88              88                                     
@@ -19,34 +19,28 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
     var body: some View {
-        TabView {
-            HomeView()
-                .tabItem {
-                    Label("Home", systemImage: "person")
-                }
-
-            StoryView()
-                .tabItem {
-                    Label("Story", systemImage: "book")
-                }
+        VStack {
+            Text("All About")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .padding()
             
-            FavoritesView()
-                .tabItem {
-                    Label("Favorites", systemImage: "star")
-                }
+            Image(information.image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .cornerRadius(10)
+                .padding(40)
             
-            FunFactsView()
-                .tabItem {
-                    Label("Fun Facts", systemImage: "hand.thumbsup")
-                }
+            Text(information.name)
+                .font(.title)
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        HomeView()
     }
 }

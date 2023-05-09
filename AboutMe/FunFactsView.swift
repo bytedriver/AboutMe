@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  FunFactsView.swift
 //  AboutMe
 //
 //  88                                                     88              88                                     
@@ -19,34 +19,34 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct FunFactsView: View {
+    
+    @State private var funFact = information.funFacts.randomElement()!
+    
     var body: some View {
-        TabView {
-            HomeView()
-                .tabItem {
-                    Label("Home", systemImage: "person")
-                }
-
-            StoryView()
-                .tabItem {
-                    Label("Story", systemImage: "book")
-                }
+        VStack {
+            Text("Fun Facts")
+                .font(.largeTitle)
+                .fontWeight(.bold)
             
-            FavoritesView()
-                .tabItem {
-                    Label("Favorites", systemImage: "star")
-                }
+            Text(funFact)
+                .padding()
+                .font(.title)
+                .frame(minHeight: 400)
             
-            FunFactsView()
-                .tabItem {
-                    Label("Fun Facts", systemImage: "hand.thumbsup")
-                }
+            Button("Show Random Fact") {
+                funFact = information.funFacts.randomElement()!
+            }
+            .padding()
+            .background(Color.cyan)
+            .cornerRadius(15)
         }
+        .padding()
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct FunFactsView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        FunFactsView()
     }
 }
